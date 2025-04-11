@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{085251FE-F3B0-44B3-A60A-88BAD85FFF30}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ContactsApp.Domain</RootNamespace>
+    <AssemblyName>ContactsApp.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aggregates\ContactInfo.cs" />
+    <Compile Include="Aggregates\Builders\ContactInfoBuilder.cs" />
+    <Compile Include="Aggregates\Exceptions\BuilderAlreadyCreateObject.cs" />
+    <Compile Include="Aggregates\Exceptions\EmailAlreadyAddedAsPrimary.cs" />
+    <Compile Include="Aggregates\Exceptions\PhoneAlreadyAdded.cs" />
+    <Compile Include="Commands\PersonalDataChanging.cs" />
+    <Compile Include="DomainResurces.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DomainResurces.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\IDomainCommand.cs" />
+    <Compile Include="Commands\IDomainCommandHandler.cs" />
+    <Compile Include="Events\ConsoleLogger.cs" />
+    <Compile Include="Events\PersonalDataChanged.cs" />
+    <Compile Include="Events\PhotoChanged.cs" />
+    <Compile Include="Commands\PhotoChanging.cs" />
+    <Compile Include="Events\IDomainEvent.cs" />
+    <Compile Include="Events\IDomainEventHandler.cs" />
+    <Compile Include="Events\IEventDomainDispatcher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ContactInfoRepository.cs" />
+    <Compile Include="Repositories\InitData.cs" />
+    <Compile Include="Shared\BytesHelper.cs" />
+    <Compile Include="Shared\Consts.cs" />
+    <Compile Include="Shared\EnumHelper.cs" />
+    <Compile Include="ValueObjects\Address.cs" />
+    <Compile Include="ValueObjects\ContactPersonalData.cs" />
+    <Compile Include="ValueObjects\ContactPhoto.cs" />
+    <Compile Include="ValueObjects\EmailAddress.cs" />
+    <Compile Include="ValueObjects\Exceptions\InvalidEmailAddressFormat.cs" />
+    <Compile Include="ValueObjects\Exceptions\InvalidPhoneNumberFormat.cs" />
+    <Compile Include="ValueObjects\FirstNames.cs" />
+    <Compile Include="ValueObjects\LastNames.cs" />
+    <Compile Include="ValueObjects\PhoneNumber.cs" />
+    <Compile Include="ValueObjects\ValueOject.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DomainResurces.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DomainResurces.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
